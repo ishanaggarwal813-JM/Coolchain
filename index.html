@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoolChain - Solar Micro Cold Storage</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+        header {
+            background: #0f766e;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #facc15;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0f766e, #115e59);
+            color: white;
+            padding: 55px 7%;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin: 0 0 15px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: #facc15;
+            color: #1f2937;
+            padding: 13px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+        main {
+            width: 86%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #115e59;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .card i {
+            font-size: 25px;
+            color: #0f766e;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            margin: 5px 0;
+        }
+
+        .value {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0f766e;
+        }
+
+        /* BOOKING */
+        .booking-box {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #0f766e;
+        }
+
+        .cost-box {
+            margin-top: 20px;
+            background: #ecfdf5;
+            border-left: 5px solid #0f766e;
+            padding: 18px;
+            border-radius: 7px;
+        }
+
+        .cost-box h3 {
+            margin: 0 0 8px;
+        }
+
+        .total {
+            font-size: 28px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: #0f766e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #115e59;
+        }
+
+        /* AI */
+        .ai-box {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .prediction {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 7px;
+        }
+
+        /* TABLE */
+        .table-box {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        th,
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        th {
+            background: #f0fdfa;
+            color: #115e59;
+        }
+
+        .status {
+            background: #dcfce7;
+            color: #166534;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            background: #134e4a;
+            color: white;
+            padding: 25px 7%;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 40px 5%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            main {
+                width: 92%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <i class="fa-solid fa-snowflake"></i>
+        Cool<span>Chain</span>
+    </div>
+
+    <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#booking">Book Storage</a>
+        <a href="#reservations">Reservations</a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Solar-Powered Micro Cold Storage</h1>
+
+    <p>
+        Affordable, smart and sustainable cold storage for farmers.
+        CoolChain helps reduce post-harvest losses by providing
+        temperature-controlled storage using solar energy.
+    </p>
+
+    <a href="#booking" class="hero-btn">
+        <i class="fa-solid fa-calendar-plus"></i>
+        Book Storage
+    </a>
+</section>
+
+
+<main>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard">
+
+        <h2 class="section-title">
+            <i class="fa-solid fa-gauge"></i>
+            Live Storage Dashboard
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <i class="fa-solid fa-temperature-half"></i>
+                <h3>Temperature</h3>
+                <div class="value" id="temperature">4.2°C</div>
+                <small>Optimal range: 2–8°C</small>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-droplet"></i>
+                <h3>Humidity</h3>
+                <div class="value" id="humidity">72%</div>
+                <small>Real-time sensor</small>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-solar-panel"></i>
+                <h3>Solar Power</h3>
+                <div class="value" id="solar">4.8 kW</div>
+                <small>Current generation</small>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-battery-three-quarters"></i>
+                <h3>Battery</h3>
+                <div class="value" id="battery">86%</div>
+                <small>Backup available</small>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- AI PRICE PREDICTION -->
+    <section class="ai-box">
+
+        <h2 class="section-title">
+            <i class="fa-solid fa-brain"></i>
+            AI Mandi Price Forecast
+        </h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Crop</label>
+
+                <select id="predictionCrop">
+                    <option value="Tomato">Tomato</option>
+                    <option value="Potato">Potato</option>
+                    <option value="Onion">Onion</option>
+                    <option value="Capsicum">Capsicum</option>
+                    <option value="Apple">Apple</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Current Market Price (₹/kg)</label>
+
+                <input
+                    type="number"
+                    id="currentPrice"
+                    value="40"
+                    min="1"
+                >
+            </div>
+
+        </div>
+
+        <div class="prediction" id="prediction">
+            Expected price: ₹44/kg
+        </div>
+
+    </section>
+
+
+    <!-- BOOKING -->
+    <section id="booking">
+
+        <h2 class="section-title">
+            <i class="fa-solid fa-box"></i>
+            Book Cold Storage
+        </h2>
+
+        <div class="booking-box">
+
+            <form id="bookingForm">
+
+                <div class="form-grid">
+
+                    <!-- FARMER -->
+                    <div>
+                        <label for="farmerName">
+                            Farmer Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="farmerName"
+                            placeholder="Enter farmer name"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- CROP -->
+                    <div>
+                        <label for="crop">
+                            Crop Type
+                        </label>
+
+                        <select id="crop" required>
+                            <option value="">Select Crop</option>
+                            <option value="Tomato">Tomato</option>
+                            <option value="Potato">Potato</option>
+                            <option value="Onion">Onion</option>
+                            <option value="Capsicum">Capsicum</option>
+                            <option value="Apple">Apple</option>
+                        </select>
+                    </div>
+
+
+                    <!-- QUANTITY -->
+                    <div>
+                        <label for="quantity">
+                            Quantity (kg)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            min="1"
+                            placeholder="Example: 100"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- DURATION -->
+                    <div>
+                        <label for="duration">
+                            Storage Duration
+                        </label>
+
+                        <select id="duration" required>
+
+                            <option value="24">
+                                24 Hours
+                            </option>
+
+                            <option value="48">
+                                48 Hours
+                            </option>
+
+                            <option value="72">
+                                72 Hours
+                            </option>
+
+                            <option value="96">
+                                96 Hours
+                            </option>
+
+                            <option value="120">
+                                120 Hours
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <!-- DELIVERY -->
+                    <div>
+                        <label for="delivery">
+                            Delivery Mode
+                        </label>
+
+                        <select id="delivery" required>
+
+                            <option value="farm_pickup">
+                                Farm Pickup
+                            </option>
+
+                            <option value="self_drop">
+                                Self Drop-off
+                            </option>
+
+                            <option value="local_transport">
+                                Local Transport
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <!-- COST -->
+                <div class="cost-box">
+
+                    <h3>
+                        Estimated Storage Cost
+                    </h3>
+
+                    <div class="total" id="totalCost">
+                        ₹0
+                    </div>
+
+                    <small>
+                        Final cost depends on quantity,
+                        duration and delivery mode.
+                    </small>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitBtn"
+                >
+                    <i class="fa-solid fa-check"></i>
+                    Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESERVATIONS -->
+    <section id="reservations">
+
+        <h2 class="section-title">
+            <i class="fa-solid fa-list"></i>
+            Recent Reservations
+        </h2>
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Farmer</th>
+                        <th>Crop</th>
+                        <th>Quantity</th>
+                        <th>Duration</th>
+                        <th>Delivery</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="bookingTable">
+
+                    <tr>
+                        <td colspan="8" class="empty">
+                            Loading bookings...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>
+        © 2026 CoolChain | Solar Micro Cold Storage
+    </p>
+
+    <p>
+        Smart Storage • Solar Energy • Better Prices
+    </p>
+</footer>
+
+
+<script>
+
+    /* =========================
+       COST CALCULATION
+    ========================= */
+
+    const quantityInput = document.getElementById("quantity");
+    const durationInput = document.getElementById("duration");
+    const deliveryInput = document.getElementById("delivery");
+
+    const totalCost = document.getElementById("totalCost");
+
+
+    function calculateCost() {
+
+        const quantity = Number(quantityInput.value) || 0;
+
+        const duration = Number(durationInput.value) || 24;
+
+        const delivery = deliveryInput.value;
+
+
+        /*
+            Storage rate:
+            ₹1 per kg per 24 hours
+        */
+
+        const storageCost =
+            quantity * (duration / 24);
+
+
+        let deliveryCost = 0;
+
+
+        if (delivery === "farm_pickup") {
+            deliveryCost = 100;
+        }
+
+        else if (delivery === "self_drop") {
+            deliveryCost = 0;
+        }
+
+        else if (delivery === "local_transport") {
+            deliveryCost = 150;
+        }
+
+
+        const total =
+            Math.round(storageCost + deliveryCost);
+
+
+        totalCost.innerText =
+            "₹" + total;
+    }
+
+
+    quantityInput.addEventListener(
+        "input",
+        calculateCost
+    );
+
+    durationInput.addEventListener(
+        "change",
+        calculateCost
+    );
+
+    deliveryInput.addEventListener(
+        "change",
+        calculateCost
+    );
+
+
+    /* =========================
+       AI PRICE PREDICTION
+    ========================= */
+
+    const predictionCrop =
+        document.getElementById("predictionCrop");
+
+    const currentPrice =
+        document.getElementById("currentPrice");
+
+    const prediction =
+        document.getElementById("prediction");
+
+
+    function updatePrediction() {
+
+        const price =
+            Number(currentPrice.value) || 0;
+
+        const predictedPrice =
+            Math.round(price * 1.10);
+
+        prediction.innerHTML = `
+            <strong>${predictionCrop.value}</strong><br>
+            Current price: ₹${price}/kg<br>
+            Expected price after storage:
+            <strong>₹${predictedPrice}/kg</strong>
+        `;
+    }
+
+
+    predictionCrop.addEventListener(
+        "change",
+        updatePrediction
+    );
+
+    currentPrice.addEventListener(
+        "input",
+        updatePrediction
+    );
+
+
+    /* =========================
+       FAKE IOT SENSOR DATA
+    ========================= */
+
+    function simulateSensors() {
+
+        const temperature =
+            (3.5 + Math.random() * 2).toFixed(1);
+
+        const humidity =
+            Math.floor(68 + Math.random() * 10);
+
+        const solar =
+            (4 + Math.random() * 1.5).toFixed(1);
+
+        const battery =
+            Math.floor(80 + Math.random() * 12);
+
+
+        document.getElementById(
+            "temperature"
+        ).innerText = temperature + "°C";
+
+
+        document.getElementById(
+            "humidity"
+        ).innerText = humidity + "%";
+
+
+        document.getElementById(
+            "solar"
+        ).innerText = solar + " kW";
+
+
+        document.getElementById(
+            "battery"
+        ).innerText = battery + "%";
+    }
+
+
+    /* =========================
+       DELIVERY NAME
+    ========================= */
+
+    function getDeliveryName(mode) {
+
+        if (mode === "farm_pickup") {
+            return "Farm Pickup";
+        }
+
+        if (mode === "self_drop") {
+            return "Self Drop-off";
+        }
+
+        if (mode === "local_transport") {
+            return "Local Transport";
+        }
+
+        return mode;
+    }
+
+
+    /* =========================
+       LOAD BOOKINGS FROM SQLITE
+    ========================= */
+
+    async function loadBookings() {
+
+        const table =
+            document.getElementById("bookingTable");
+
+        try {
+
+            const response =
+                await fetch("/api/bookings");
+
+
+            if (!response.ok) {
+                throw new Error(
+                    "Failed to load bookings"
+                );
+            }
+
+
+            const bookings =
+                await response.json();
+
+
+            if (!bookings.length) {
+
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="empty">
+                            No bookings yet.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            table.innerHTML =
+                bookings.map(function (booking) {
+
+                    return `
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    ${booking.booking_id}
+                                </strong>
+                            </td>
+
+                            <td>
+                                ${booking.farmer_name}
+                            </td>
+
+                            <td>
+                                ${booking.crop_type}
+                            </td>
+
+                            <td>
+                                ${booking.quantity} kg
+                            </td>
+
+                            <td>
+                                ${booking.duration} Hrs
+                            </td>
+
+                            <td>
+                                ${getDeliveryName(
+                                    booking.delivery_mode
+                                )}
+                            </td>
+
+                            <td>
+                                ₹${booking.total_cost}
+                            </td>
+
+                            <td>
+                                <span class="status">
+                                    Active
+                                </span>
+                            </td>
+
+                        </tr>
+                    `;
+
+                }).join("");
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Booking Load Error:",
+                error
+            );
+
+            table.innerHTML = `
+                <tr>
+                    <td colspan="8" class="empty">
+                        Unable to load bookings.
+                        Make sure server.js is running.
+                    </td>
+                </tr>
+            `;
+        }
+    }
+
+
+    /* =========================
+       SAVE BOOKING TO SQLITE
+    ========================= */
+
+    document
+        .getElementById("bookingForm")
+        .addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const farmerName =
+                    document.getElementById(
+                        "farmerName"
+                    ).value.trim();
+
+
+                const crop =
+                    document.getElementById(
+                        "crop"
+                    ).value;
+
+
+                const quantity =
+                    Number(
+                        document.getElementById(
+                            "quantity"
+                        ).value
+                    );
+
+
+                const duration =
+                    Number(
+                        document.getElementById(
+                            "duration"
+                        ).value
+                    );
+
+
+                const delivery =
+                    document.getElementById(
+                        "delivery"
+                    ).value;
+
+
+                const total =
+                    Number(
+                        totalCost.innerText
+                            .replace("₹", "")
+                    );
+
+
+                if (
+                    !farmerName ||
+                    !crop ||
+                    quantity <= 0
+                ) {
+
+                    alert(
+                        "Please fill all booking details."
+                    );
+
+                    return;
+                }
+
+
+                const submitBtn =
+                    document.getElementById(
+                        "submitBtn"
+                    );
+
+
+                submitBtn.disabled = true;
+
+                submitBtn.innerHTML = `
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Saving Booking...
+                `;
+
+
+                try {
+
+                    /*
+                        SEND DATA TO EXPRESS
+                        SERVER -> SQLITE
+                    */
+
+                    const response =
+                        await fetch(
+                            "/api/bookings",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    farmer_name:
+                                        farmerName,
+
+                                    crop_type:
+                                        crop,
+
+                                    quantity:
+                                        quantity,
+
+                                    duration:
+                                        duration,
+
+                                    delivery_mode:
+                                        delivery,
+
+                                    total_cost:
+                                        total
+
+                                })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.error ||
+                            "Booking failed"
+                        );
+                    }
+
+
+                    alert(
+                        "✅ Booking confirmed!\n\n" +
+                        "Booking ID: " +
+                        data.booking.booking_id
+                    );
+
+
+                    /*
+                        CLEAR FORM
+                    */
+
+                    document
+                        .getElementById(
+                            "bookingForm"
+                        )
+                        .reset();
+
+
+                    calculateCost();
+
+
+                    /*
+                        LOAD NEW BOOKING
+                        FROM SQLITE
+                    */
+
+                    await loadBookings();
+
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Booking Error:",
+                        error
+                    );
+
+                    alert(
+                        "❌ Booking failed!\n\n" +
+                        error.message
+                    );
+
+                }
+
+                finally {
+
+                    submitBtn.disabled = false;
+
+                    submitBtn.innerHTML = `
+                        <i class="fa-solid fa-check"></i>
+                        Confirm Booking
+                    `;
+                }
+
+            }
+        );
+
+
+    /* =========================
+       INITIALIZE
+    ========================= */
+
+    calculateCost();
+
+    updatePrediction();
+
+    loadBookings();
+
+    simulateSensors();
+
+
+    /*
+        Update IoT values every 3 seconds
+    */
+
+    setInterval(
+        simulateSensors,
+        3000
+    );
+
+</script>
+
+</body>
+</html>
